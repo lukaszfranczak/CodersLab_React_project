@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-// import CatRow from "../CatRow/CatRow";
-// import CategoryRow from "../CategoryRow/CategoryRow";
-
+import MovieRow from "../MovieRow/MovieRow";
 
 // Tu wstawić import stylu
+
+// ZROBIĆ - złożyć razem dane z zapytań do dwóch API; w tym momencie iteruję po jednej liście wyników i nie wiem jak by to miało wyglądać gdybym miał mieć dwa źródła danych
 
 class MoviesList extends Component {
 
@@ -13,11 +13,16 @@ class MoviesList extends Component {
 
         {this.props.moviesListData.forEach((movie) => {
             rows.push(
-                <div key={movie.imdbID}>
-                    <img src={movie.Poster}></img>
-                    <p>Title: {movie.Title}</p>
-                    <p>IMDB rating (1-10): {movie.imdbRating}</p>
-                </div>
+
+                // OMDB
+                <MovieRow movieResult={movie}/>
+
+                // // TNDB
+                // <div key={movie.id}>
+                //     <img src={movie.poster_path}></img>
+                //     <p>Title: {movie.original_title}</p>
+                //     <p>IMDB rating (1-10): {movie.vote_average}</p>
+                // </div>
             )
         })
 

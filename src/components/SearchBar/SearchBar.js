@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 
-// Tu wstawić import stylu
+import './SearchBar.scss';
 
 class SearchBar extends Component {
+
+    handleInputValue = (userInput) => {
+        if (typeof this.props.movieFilter === 'function') {
+            this.props.movieFilter(userInput);
+        }
+    };
 
     searchMovie = (e, movieTitle) => {
         e.preventDefault();
@@ -11,13 +17,27 @@ class SearchBar extends Component {
         }
     };
 
-    // ZROBIĆ - rozkminić przekazywanie wartości wpisanej przez użytkownika z drugiego inputu do pierwszego
+    // NIE DZIAŁA - przy przekazywaniu wartości pojawia się [object object]
 
     render () {
         return (
             <form>
-                <input type='text' placeholder='Movie name' />
-                <input type='submit' value='Search' onClick={(event) => this.searchMovie(event, event.target.value)}/>
+                <div className='form-group text-center'>
+                    <input className='form-control searchInput' type='text' placeholder='Movie name' value={this.props.value} onChange={this.handleInputValue} />
+                </div>
+                <div className='form-check'>
+                    <label className='form-check-label checkBox'>
+                        <input className='form-check-input' type='checkbox' />
+                        IMDB data
+                    </label>
+                    <label className='form-check-label checkBox'>
+                        <input className='form-check-input' type='checkbox' />
+                        TMDB data
+                    </label>
+                </div>
+                <div className='form-group text-center'>
+                    <input className='btn searchButton ' type='submit' value='Search' onClick={(event) => this.searchMovie(event, event.target.value)}/>
+                </div>
             </form>
         )
     }
