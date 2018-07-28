@@ -4,26 +4,31 @@ import './SearchBar.scss';
 
 class SearchBar extends Component {
 
-    handleInputValue = (userInput) => {
-        if (typeof this.props.movieFilter === 'function') {
-            this.props.movieFilter(userInput);
+    constructor(props) {
+        super(props);
+        this.state = {
+            movieName: ''
         }
+    }
+
+    handleInputValue = (event) => {
+        this.setState({
+            movieName: event.target.value
+        })
     };
 
-    searchMovie = (e, movieTitle) => {
+    searchMovie = (e) => {
         e.preventDefault();
         if (typeof this.props.searchForUserMovie === 'function') {
-            this.props.searchForUserMovie(movieTitle);
+            this.props.searchForUserMovie(this.state.movieName);
         }
     };
-
-    // NIE DZIAŁA - przy przekazywaniu wartości pojawia się [object object]
 
     render () {
         return (
             <form>
                 <div className='form-group text-center'>
-                    <input className='form-control searchInput' type='text' placeholder='Movie name' value={this.props.value} onChange={this.handleInputValue} />
+                    <input className='form-control searchInput' type='text' placeholder='Movie name' onChange={this.handleInputValue} />
                 </div>
                 <div className='form-check'>
                     <label className='form-check-label checkBox'>
@@ -36,7 +41,7 @@ class SearchBar extends Component {
                     </label>
                 </div>
                 <div className='form-group text-center'>
-                    <input className='btn searchButton ' type='submit' value='Search' onClick={(event) => this.searchMovie(event, event.target.value)}/>
+                    <button className='btn searchButton' onClick={(event) => this.searchMovie(event)}>Search</button>
                 </div>
             </form>
         )
