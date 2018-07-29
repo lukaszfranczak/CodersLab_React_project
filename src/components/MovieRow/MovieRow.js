@@ -5,6 +5,13 @@ import React, { Component } from 'react';
 // dodać event na dodawanie danego filmu do ulubionych i zmienić stylowanie gwiazdki
 
 class MovieRow extends Component {
+
+    AddToFavourites = () => {
+        if (typeof this.props.AddMovieToFavourites === 'function') {
+            this.props.AddMovieToFavourites(this.props.movieResult);
+        }
+    };
+
     render() {
         return (
             <div key={this.props.movieResult.id} className='jumbotron row'>
@@ -13,7 +20,7 @@ class MovieRow extends Component {
                 </div>
                 <div className='col-xs-12 col-sm-8 col-md-8 movieData'>
                     <h2>{this.props.movieResult.title}</h2>
-                    <p>⛧ Add to favourites</p>
+                    <p onClick={this.AddToFavourites}>⛧ Add to favourites</p>
                     <p>Description: {this.props.movieResult.overview}</p>
                     <p>TNDB rating (1-10): {this.props.movieResult.vote_average}</p>
                     <p>IMDB rating (1-10): {this.props.movieResult.imdbRating}</p>

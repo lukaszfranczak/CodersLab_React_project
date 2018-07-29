@@ -4,9 +4,7 @@ import MovieRow from "../MovieRow/MovieRow";
 
 // Tu wstawić import stylu
 
-// ULUBIONE:
-// dodać dodatkowy panel tylko z ulubionymi (Route);
-// obecnie ulubione są wrzucane bezpośrednio do App - wyrzucić to stamtąd i przerzucić do panelu
+// ZROBIĆ:
 // dodać pending zanim się załaduje
 
 class MovieFavourites extends Component {
@@ -42,12 +40,13 @@ class MovieFavourites extends Component {
         let rows = [];
         {this.state.favouriteMovies.forEach((movie) => {
             rows.push(
-                <MovieRow movieResult={movie}/>
+                <MovieRow movieResult={movie} key={movie.id}/>
             )
         })
 
         return (
             <div>
+                <h1 className='title'>What should I watch today?</h1>
                 {rows}
             </div>
         )
