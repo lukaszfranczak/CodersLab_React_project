@@ -25,14 +25,16 @@ class LogIn extends Component {
 
     login = (e) => {
         e.preventDefault();
+
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(() => {
                 this.props.history.push('/');
             })
-         .catch(function(error) {
-            // Handle Errors here.
-            var errorMessage = error.message;
-            alert(errorMessage);
+            .catch((error) => {
+               // Handle Errors here.
+               var errorCode = error.code;
+               var errorMessage = error.message;
+               alert(errorCode, errorMessage);
         });
     };
 

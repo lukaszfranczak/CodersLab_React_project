@@ -17,19 +17,30 @@ import './App.scss';
 
 class App extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            userId: ''
+        }
+    }
 
+    handleUserId = (user) => {
+        this.setState({
+            userId: user
+        })
+    };
 
     render () {
 
         return (
             <HashRouter>
                 <div>
-                    <Header/>
+                    <Header fetchUserEmail={this.handleUserId} />
                     <div className="container">
                         <Switch>
-                            <Route exact path='/' component={Main}/>
+                            <Route exact path='/' render={ () => <Main loggedUserId={this.state.userId} />}/>
                             <Route path='/top' component={TopRated}/>
-                            <Route path='/favourites' component={MovieFavourites}/>
+                            <Route path='/favourites' render={ () => <MovieFavourites loggedUserId={this.state.userId} />}/>
                             <Route path='/register' component={Register}/>
                             <Route path='/login' component={LogIn}/>
                             <Route path='*' component={NotFound} />

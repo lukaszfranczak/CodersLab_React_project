@@ -16,8 +16,8 @@ class Main extends Component {
         }
     }
 
-    AddToFavourites = (data) => {
-        const db = firebase.app().database().ref('movies')
+    AddToFavourites = (data, userId) => {
+        const db = firebase.app().database().ref('movies/'+userId);
         db.push(data);
     }
 
@@ -57,7 +57,7 @@ class Main extends Component {
             <div>
                 <h1 className='title'>What should I watch today?</h1>
                 <SearchBar searchForUserMovie={this.SearchUserMovie}/>
-                <MoviesList moviesListData={this.state.userMovies} AddMovieToFavourites={this.AddToFavourites}/>
+                <MoviesList moviesListData={this.state.userMovies} AddMovieToFavourites={this.AddToFavourites} loggedUserId={this.props.loggedUserId}/>
             </div>
         )
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import * as firebase from 'firebase';
 
+
 import {
     NavLink
 } from 'react-router-dom';
@@ -26,7 +27,6 @@ class Header extends Component {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 // User is signed in.
-
                 this.setState({
                     loggedUser: {
                         email: user.email
@@ -34,30 +34,34 @@ class Header extends Component {
                     isUserLogged: true
                 })
 
-                console.log('uzytkownik jest zalogowany', user)
+                // If logged in - send user id to app component so that other components are rendered accordingly
+                if (typeof this.props.fetchUserEmail === 'function') {
+                    this.props.fetchUserEmail(user.uid);
+                }
 
-                var displayName = user.displayName;
-                var email = user.email;
-                var emailVerified = user.emailVerified;
-                var photoURL = user.photoURL;
-                var isAnonymous = user.isAnonymous;
-                var uid = user.uid;
-                var providerData = user.providerData;
+                // var displayName = user.displayName;
+                // var email = user.email;
+                // var emailVerified = user.emailVerified;
+                // var photoURL = user.photoURL;
+                // var isAnonymous = user.isAnonymous;
+                // var uid = user.uid;
+                // var providerData = user.providerData;
                 // ...
             } else {
                 // User is signed out.
                 // ...
-
-                console.log('uzytkownik jest niezalogowany');
             }
         });
     }
 
     signOut = () => {
-        firebase.auth().signOut();
+        firebase.auth().signOut()
+
         this.setState({
             isUserLogged: false
         })
+
+        window.location.replace('/#/');
     }
 
     render() {
