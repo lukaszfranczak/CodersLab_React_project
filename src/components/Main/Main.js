@@ -21,6 +21,12 @@ class Main extends Component {
         db.push(data);
     }
 
+    RemoveFromFavourites = (data, userId) => {
+        const db = firebase.app().database().ref('movies/'+userId);
+        // db.child('-LJ-wuFdofgjep9RVoiU').remove(); s      // to działa, ale powinienem dla każdgo pytanie jak namierzyć konkretne dziecko
+    }
+
+
     SearchUserMovie = (userInput) => {
 
         // PONIŻEJ FETCH Z TNDB I ZESTAW FETCHY NA PODSTAWIE JEGO WYNIKÓW
@@ -57,7 +63,12 @@ class Main extends Component {
             <div>
                 <h1 className='title'>What should I watch today?</h1>
                 <SearchBar searchForUserMovie={this.SearchUserMovie}/>
-                <MoviesList moviesListData={this.state.userMovies} AddMovieToFavourites={this.AddToFavourites} loggedUserId={this.props.loggedUserId}/>
+                <MoviesList
+                    moviesListData={this.state.userMovies}
+                    AddMovieToFavourites={this.AddToFavourites}
+                    RemoveMovieFromFavourites={this.RemoveFromFavourites}
+                    loggedUserId={this.props.loggedUserId}
+                />
             </div>
         )
     }

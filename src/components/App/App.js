@@ -39,7 +39,7 @@ class App extends Component {
                     <div className="container">
                         <Switch>
                             <Route exact path='/' render={ () => <Main loggedUserId={this.state.userId} />}/>
-                            <Route path='/top' component={TopRated}/>
+                            <Route path='/top' render={ () => <TopRated loggedUserId={this.state.userId} />}/>
                             <Route path='/favourites' render={ () => <MovieFavourites loggedUserId={this.state.userId} />}/>
                             <Route path='/register' component={Register}/>
                             <Route path='/login' component={LogIn}/>

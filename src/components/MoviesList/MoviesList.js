@@ -9,7 +9,13 @@ class MoviesList extends Component {
         let rows = [];
         {this.props.moviesListData.forEach((movie) => {
             rows.push(
-                <MovieRow movieResult={movie} AddMovieToFavourites={this.props.AddMovieToFavourites} loggedUserId={this.props.loggedUserId} key={movie.id}/>
+                <MovieRow
+                    movieResult={movie}
+                    AddMovieToFavourites={this.props.AddMovieToFavourites}
+                    RemoveMovieFromFavourites={this.props.RemoveMovieFromFavourites}
+                    loggedUserId={this.props.loggedUserId}
+                    key={movie.id}
+                />
             )
         });
 

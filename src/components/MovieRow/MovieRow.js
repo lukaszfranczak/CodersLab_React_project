@@ -20,6 +20,12 @@ class MovieRow extends Component {
         }
     };
 
+    RemoveFromFavourites = () => {
+        if (typeof this.props.RemoveMovieFromFavourites === 'function') {
+            this.props.RemoveMovieFromFavourites(this.props.movieResult, this.state.userId);
+        }
+    };
+
     componentDidMount() {
         if (this.props.loggedUserId !== '') {
             this.setState({
@@ -44,6 +50,9 @@ class MovieRow extends Component {
                     <h2>{this.props.movieResult.title}</h2>
                     {this.state.isUserLogged
                         ? <p onClick={this.AddToFavourites}>⛧ Add to favourites</p>
+                        : null}
+                    {this.state.isUserLogged
+                        ? <p onClick={this.RemoveFromFavourites}>⛧ Remove from favourites</p>
                         : null}
                     <p>Description: {this.props.movieResult.overview}</p>
                     <p>TNDB rating (1-10): {this.props.movieResult.vote_average}</p>

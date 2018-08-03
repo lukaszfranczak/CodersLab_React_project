@@ -23,6 +23,7 @@ class MovieFavourites extends Component {
 
         db.on('value', (dataFromFB) => {
             const fb = dataFromFB.val();
+
             let data = [];
 
             for (let key in fb) {
