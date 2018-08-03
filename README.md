@@ -5,11 +5,15 @@ Main idea of the project is to aggregate movie information from different source
 Technologies applied:
 - React
 - Firebase
-- SASS
+- CSS
 - Bootstrap
+- Webpack
+
+Functionalities:
+- data rendering based on multiple APIs
+- ability to add movie to favourites
+- user accounts with list of favourites
 
 To-do:
-- add favourites
-- add user accounts
 - add sharing option
 - full RWD

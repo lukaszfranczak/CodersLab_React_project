@@ -6,6 +6,8 @@ import MovieRow from "../MovieRow/MovieRow";
 
 // ZROBIĆ:
 // dodać pending zanim się załaduje
+// dodać opcję do usunięcia z listy favourites
+// do każdego dodawanego filmu do favourites dodać tablicę id, którą później będe filtrował po userze i ten przefiltrowany wynik będę pokazywał jako favourites danego usera
 
 class MovieFavourites extends Component {
 
