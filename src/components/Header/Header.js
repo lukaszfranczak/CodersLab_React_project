@@ -9,8 +9,8 @@ import {
 
 // ZROBIĆ:
 // header zrobić jako przyczepiony panel na samej górze strony (position: fixed)
-// po wylogowaniu wyczyścić dane wpisane przez usera
 // zamiast Favourites i Log out zrobić jedną listę My account po najechaniu którego dopiero pokażą się Favourites i Log out
+// dodać efekt łapki przy najeżdżaniu na Log out
 
 class Header extends Component {
 

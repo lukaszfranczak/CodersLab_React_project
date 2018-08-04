@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import MovieRow from "../MovieRow/MovieRow";
 
-// Tu wstawić import stylu
+import './MovieFavourites.scss';
 
 // ZROBIĆ:
-// dodać pending zanim się załaduje
 // dodać opcję do usunięcia z listy favourites
 
 class MovieFavourites extends Component {
@@ -45,6 +44,13 @@ class MovieFavourites extends Component {
                 <MovieRow movieResult={movie} key={movie.id}/>
             )
         })
+
+
+        if(this.state.pending) {
+            return (
+                <div className="loader"></div>
+            );
+        }
 
         return (
             <div>

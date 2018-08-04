@@ -8,7 +8,6 @@ class Register extends Component {
         this.state = {
             email: '',
             password1: '',
-            password2: ''
         }
     }
 

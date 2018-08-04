@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import MoviesList from "../MoviesList/MoviesList";
 
-// Tu wstawić import stylu
-
-// ZROBIĆ:
-// dodać pending zanim się załaduje
+import './TopRated.scss';
 
 import * as firebase from 'firebase';
 
+
+// ZROBIĆ:
 // Dodać funkcję RemoveFromFavourites (taką samą jak w Main)
 
 class TopRated extends Component {
@@ -15,7 +14,8 @@ class TopRated extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            topRatedMovies: []
+            topRatedMovies: [],
+            pending: true
         }
     }
 
@@ -46,23 +46,31 @@ class TopRated extends Component {
                 });
 
                 this.setState({
-                    topRatedMovies: data2.results
+                    topRatedMovies: data2.results,
+                    pending: false
                 });
             })
     }
 
 
     render () {
+
+        if(this.state.pending) {
+            return (
+                <div className="loader"></div>
+            );
+        }
+
         return (
-            <div>
-                <h1 className='title'>What should I watch today?</h1>
-                <MoviesList
-                    moviesListData={this.state.topRatedMovies}
-                    AddMovieToFavourites={this.AddToFavourites}
-                    RemoveMovieFromFavourites={this.RemoveFromFavourites}
-                    loggedUserId={this.props.loggedUserId}
-                />
-            </div>
+           <div>
+               <h1 className='title'>What should I watch today?</h1>
+               <MoviesList
+                   moviesListData={this.state.topRatedMovies}
+                   AddMovieToFavourites={this.AddToFavourites}
+                   RemoveMovieFromFavourites={this.RemoveFromFavourites}
+                   loggedUserId={this.props.loggedUserId}
+               />
+           </div>
         )
     }
 
