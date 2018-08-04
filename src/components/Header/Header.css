@@ -8,26 +8,22 @@
   flex-direction: row;
   position: fixed;
   top: 0;
-  z-index: 2;
-}
+  z-index: 2; }
 
 .top_header li {
   color: white;
   list-style-type: none;
   line-height: 45px;
-  padding: 0 20px;
-}
+  padding: 0 20px; }
 
 .top_header a {
   text-decoration: none;
   color: lightgrey;
   font-size: 14px;
-  font-weight: 700;
-}
+  font-weight: 700; }
 
 .top_header a:hover {
-  color: white;
-}
+  color: white; }
 
 .account {
   position: relative;
@@ -35,13 +31,11 @@
   font-size: 14px;
   font-weight: 700;
   margin-left: auto;
-  margin-right: 40px
-}
+  margin-right: 40px; }
 
 .account:hover .accountDropdown {
   display: block;
-  z-index: 2;
-}
+  z-index: 2; }
 
 .accountDropdown {
   position: absolute;
@@ -49,14 +43,12 @@
   right: 0;
   padding-top: 52px;
   display: none;
-  width: 150px;
-}
+  width: 150px; }
 
 .accountDropdown li {
   background-color: black;
   padding: 0 20px;
-  color: lightgrey;
-}
+  color: lightgrey; }
 
 .accountDropdown:before {
   position: absolute;
@@ -64,17 +56,15 @@
   left: 60%;
   content: "";
   border: 5px solid black;
-  transform: rotate(45deg);
-}
+  transform: rotate(45deg); }
 
 .accountDropdown > .userEmail {
-  color: white;
-}
+  color: white; }
 
 .logOutLink {
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .logOutLink:hover {
-  color: white;
-}
+  color: white; }
+
+/*# sourceMappingURL=Header.css.map */

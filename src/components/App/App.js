@@ -15,6 +15,9 @@ import {
 
 import './App.scss';
 
+// ZROBIĆ
+// dodać losowanie tła
+
 class App extends Component {
 
     constructor(props) {

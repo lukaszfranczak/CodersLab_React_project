@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import * as firebase from 'firebase';
 
+import './Header.scss';
+
 
 import {
     NavLink
@@ -67,14 +69,19 @@ class Header extends Component {
     render() {
 
         return (
-            <ul>
+            <ul className='top_header'>
                 <li><NavLink exact to='/'>Main page</NavLink></li>
                 <li><NavLink to='/top'>Top rated</NavLink></li>
-                {this.state.isUserLogged ? <li><NavLink to='/favourites'>Favourites</NavLink></li> : null}
-                {this.state.isUserLogged ? null : <li><NavLink to='/register'>Register</NavLink></li>}
-                {this.state.isUserLogged ? null : <li><NavLink to='/login'>Log in</NavLink></li>}
-                {this.state.isUserLogged ? <li>{this.state.loggedUser.email}</li> : null}
-                {this.state.isUserLogged ? <li onClick={this.signOut}>Log out</li> : null}
+                {<li className='account'>My account
+                    <ul className='accountDropdown'>
+                        {this.state.isUserLogged ? null : <li><NavLink to='/register'>Register</NavLink></li>}
+                        {this.state.isUserLogged ? null : <li><NavLink to='/login'>Log in</NavLink></li>}
+                        {this.state.isUserLogged ? <li className='userEmail'>{this.state.loggedUser.email}</li> : null}
+                        {this.state.isUserLogged ? <li><NavLink to='/favourites'>Favourites</NavLink></li> : null}
+                        {this.state.isUserLogged ? <li onClick={this.signOut} className='logOutLink'>Log out</li> : null}
+                    </ul>
+                </li>}
+
             </ul>
         )
     }

@@ -31,11 +31,11 @@ class SearchBar extends Component {
                     <input className='form-control searchInput' type='text' placeholder='Movie name' onChange={this.handleInputValue} />
                 </div>
                 <div className='form-check'>
-                    <label className='form-check-label checkBox'>
+                    <label className='form-check-label checkBox checkBoxLabels'>
                         <input className='form-check-input' type='checkbox' />
                         IMDB data
                     </label>
-                    <label className='form-check-label checkBox'>
+                    <label className='form-check-label checkBox checkBoxLabels'>
                         <input className='form-check-input' type='checkbox' />
                         TMDB data
                     </label>

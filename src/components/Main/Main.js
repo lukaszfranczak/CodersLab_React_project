@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import SearchBar from "../SearchBar/SearchBar";
 import MoviesList from "../MoviesList/MoviesList";
 
-// Tu wstawić import stylu
+import './Main.scss';
 
 // ZROBIĆ:
+// uruchomić checkboxy pod wyszukiwarką
+// za pomocą SASS zdefiniować zmienne dotyczące kolorów i wszystkie czcionki, które mają być białe ostylować za pomocą tych zmiennych
+// w panelu logowania i rejestracji przesunąć buttony i tytuł i ustawić marginesy
+// dodać dodatkowe grafiki do tła i zrobić losowanie z dostępnej listy przy każdym nowym wejściu na stronę
+
 // dokończyć funkcję RemoveFromFavourites - obecnie nie działa bo jest problem z identyfikatorem użytkownika
-// dodać trailery dla filmów w oparciu o zapytanie:
+
+// * dodać trailery dla filmów w oparciu o zapytanie:
 // https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US
 // dodać to w dodatkowym komponencie MovieDescription, tak żeby robić zapytanie dla jednego konkretnego filmu
 
@@ -91,9 +97,9 @@ class Main extends Component {
         }
 
         return (
-            <div>
-                <h1 className='title'>What should I watch today?</h1>
-                <SearchBar searchForUserMovie={this.SearchUserMovie}/>
+            <div className='searchBar'>
+                <h1 className='title mainTitle'>What should I watch today?</h1>
+                <SearchBar searchForUserMovie={this.SearchUserMovie} className='jumbotron'/>
                 <MoviesList
                     moviesListData={this.state.userMovies}
                     AddMovieToFavourites={this.AddToFavourites}

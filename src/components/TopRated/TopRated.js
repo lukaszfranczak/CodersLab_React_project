@@ -63,7 +63,7 @@ class TopRated extends Component {
 
         return (
            <div>
-               <h1 className='title'>What should I watch today?</h1>
+               <h1 className='title mainTitle'>Top rated movies</h1>
                <MoviesList
                    moviesListData={this.state.topRatedMovies}
                    AddMovieToFavourites={this.AddToFavourites}

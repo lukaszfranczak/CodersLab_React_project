@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-// Tu wstawić import stylu
+import './MovieRow.scss';
 
 // dodać event na dodawanie danego filmu do ulubionych i zmienić stylowanie gwiazdki
 
@@ -37,8 +37,9 @@ class MovieRow extends Component {
 
     render() {
         return (
-            <div key={this.props.movieResult.id} className='jumbotron row'>
-                <div className='col-xs-12 col-sm-4 col-md-4 movieImg'>
+            <div key={this.props.movieResult.id} className='jumbotron movieRow'>
+                {/*<div className='col-xs-12 col-sm-4 col-md-4 movieImg'>*/}
+                <div className='movieImg'>
                     <img
                         src={this.props.movieResult.poster_path
                             ? 'https://image.tmdb.org/t/p/w600_and_h900_bestv2'+this.props.movieResult.poster_path
@@ -46,7 +47,8 @@ class MovieRow extends Component {
                         className='movieImg' width={200}>
                     </img>
                 </div>
-                <div className='col-xs-12 col-sm-8 col-md-8 movieData'>
+                {/*<div className='col-xs-12 col-sm-8 col-md-8 movieData'>*/}
+                <div className='movieData'>
                     <h2>{this.props.movieResult.title}</h2>
                     {this.state.isUserLogged
                         ? <p onClick={this.AddToFavourites}>⛧ Add to favourites</p>

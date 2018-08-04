@@ -5,7 +5,7 @@ import MovieRow from "../MovieRow/MovieRow";
 import './MovieFavourites.scss';
 
 // ZROBIĆ:
-// dodać opcję do usunięcia z listy favourites
+// dodać informację o źródle danego filmu i jeśli dany film jest z komponentu MovieFavourites to ukryć opcję Add to favourites
 
 class MovieFavourites extends Component {
 
@@ -54,7 +54,7 @@ class MovieFavourites extends Component {
 
         return (
             <div>
-                <h1 className='title'>What should I watch today?</h1>
+                <h1 className='title mainTitle'>My favourite movies</h1>
                 {rows}
             </div>
         )

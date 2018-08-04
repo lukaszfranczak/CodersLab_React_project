@@ -1,0 +1,17 @@
+body {
+  background: url("/src/images/darth_vader.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; }
+
+.title {
+  margin: 2em;
+  font-size: 2em;
+  text-align: center;
+  margin: 85px auto 30px auto; }
+
+.container {
+  max-width: 800px;
+  margin: 85px auto; }
+
+/*# sourceMappingURL=App.css.map */

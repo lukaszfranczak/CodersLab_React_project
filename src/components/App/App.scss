@@ -1,5 +1,8 @@
 body {
-  background: #eee;
+  background: url('/src/images/darth_vader.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .title {
@@ -7,9 +10,10 @@ body {
   //margin-top: 3em;
   font-size: 2em;
   text-align: center;
+  margin: 85px auto 30px auto;
 }
 
 .container {
   max-width: 800px;
-  margin: 40px auto;
+  margin: 85px auto;
 }
