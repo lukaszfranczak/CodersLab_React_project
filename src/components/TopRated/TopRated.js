@@ -42,7 +42,11 @@ class TopRated extends Component {
 
                 // Przypisywanie danych z data1 do data2
                 data2.results.map( (movieTNDB, index) => {
-                    movieTNDB.imdbRating = data1[index].imdbRating
+                    if (data1[index].imdbRating) {
+                        movieTNDB.imdbRating = data1[index].imdbRating
+                    } else {
+                        movieTNDB.imdbRating = 'N/A'
+                    }
                 });
 
                 this.setState({
@@ -65,10 +69,12 @@ class TopRated extends Component {
            <div>
                <h1 className='title mainTitle'>Top rated movies</h1>
                <MoviesList
-                   moviesListData={this.state.topRatedMovies}
-                   AddMovieToFavourites={this.AddToFavourites}
-                   RemoveMovieFromFavourites={this.RemoveFromFavourites}
-                   loggedUserId={this.props.loggedUserId}
+                    moviesListData={this.state.topRatedMovies}
+                    AddMovieToFavourites={this.AddToFavourites}
+                    RemoveMovieFromFavourites={this.RemoveFromFavourites}
+                    loggedUserId={this.props.loggedUserId}
+                    IMDBcheckboxValue={true} 
+                    TNDBcheckboxValue={true}
                />
            </div>
         )

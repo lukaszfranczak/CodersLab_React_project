@@ -13,6 +13,8 @@ class MoviesList extends Component {
                     movieResult={movie}
                     AddMovieToFavourites={this.props.AddMovieToFavourites}
                     RemoveMovieFromFavourites={this.props.RemoveMovieFromFavourites}
+                    IMDBcheckboxValue={this.props.IMDBcheckboxValue}
+                    TNDBcheckboxValue={this.props.TNDBcheckboxValue}
                     loggedUserId={this.props.loggedUserId}
                     key={movie.id}
                 />

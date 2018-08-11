@@ -24,7 +24,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userId: ''
+            userId: null
         }
     }
 
@@ -35,7 +35,6 @@ class App extends Component {
     };
 
     render () {
-
         return (
             <HashRouter>
                 <div>
@@ -44,7 +43,7 @@ class App extends Component {
                         <Switch>
                             <Route exact path='/' render={ () => <Main loggedUserId={this.state.userId} />}/>
                             <Route path='/top' render={ () => <TopRated loggedUserId={this.state.userId} />}/>
-                            <Route path='/favourites' render={ () => <MovieFavourites loggedUserId={this.state.userId} />}/>
+                            <Route path='/favourites' render={ () => <MovieFavourites loggedUserId={this.state.userId} source='favourites'/>}/>
                             <Route path='/register' component={Register}/>
                             <Route path='/login' component={LogIn}/>
                             <Route path='*' component={NotFound} />

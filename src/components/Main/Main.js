@@ -5,9 +5,6 @@ import MoviesList from "../MoviesList/MoviesList";
 import './Main.scss';
 
 // ZROBIĆ:
-// uruchomić checkboxy pod wyszukiwarką
-// za pomocą SASS zdefiniować zmienne dotyczące kolorów i wszystkie czcionki, które mają być białe ostylować za pomocą tych zmiennych
-// w panelu logowania i rejestracji przesunąć buttony i tytuł i ustawić marginesy
 // dodać dodatkowe grafiki do tła i zrobić losowanie z dostępnej listy przy każdym nowym wejściu na stronę
 
 // dokończyć funkcję RemoveFromFavourites - obecnie nie działa bo jest problem z identyfikatorem użytkownika
@@ -25,7 +22,9 @@ class Main extends Component {
         super(props);
         this.state = {
             userMovies: [],
-            pending: false
+            pending: false,
+            IMDBcheckbox: false,
+            TNDBcheckbox: false
         }
     }
 
@@ -40,7 +39,7 @@ class Main extends Component {
     }
 
 
-    SearchUserMovie = (userInput) => {
+    SearchUserMovie = (userInput, IMDBcheckboxValue, TNDBcheckboxValue) => {
 
         this.setState({
             pending: true
@@ -72,8 +71,11 @@ class Main extends Component {
 
                 // Przypisywanie danych z data1 do data2
                 data2.results.map( (movieTNDB, index) => {
-                    movieTNDB.imdbRating = data1[index].imdbRating
-                });
+                    if (data1[index].imdbRating) {
+                        movieTNDB.imdbRating = data1[index].imdbRating
+                    } else {
+                        movieTNDB.imdbRating = 'N/A'
+                    }                });
 
                 // // Przypisywanie danych z data3 do data2
                 // data2.results.map( (movieTNDB, index) => {
@@ -82,7 +84,9 @@ class Main extends Component {
 
                 this.setState({
                     userMovies: data2.results,
-                    pending: false
+                    pending: false,
+                    IMDBcheckbox: IMDBcheckboxValue,
+                    TNDBcheckbox: TNDBcheckboxValue
                 });
             })
 
@@ -105,6 +109,8 @@ class Main extends Component {
                     AddMovieToFavourites={this.AddToFavourites}
                     RemoveMovieFromFavourites={this.RemoveFromFavourites}
                     loggedUserId={this.props.loggedUserId}
+                    IMDBcheckboxValue={this.state.IMDBcheckbox}
+                    TNDBcheckboxValue={this.state.TNDBcheckbox}
                 />
             </div>
         )

@@ -4,18 +4,12 @@ import * as firebase from 'firebase';
 
 import './Header.scss';
 
-
 import {
     NavLink
 } from 'react-router-dom';
 
-// ZROBIĆ:
-// header zrobić jako przyczepiony panel na samej górze strony (position: fixed)
-// zamiast Favourites i Log out zrobić jedną listę My account po najechaniu którego dopiero pokażą się Favourites i Log out
-// dodać efekt łapki przy najeżdżaniu na Log out
 
 class Header extends Component {
-
 
     constructor(props) {
         super(props);
@@ -27,6 +21,7 @@ class Header extends Component {
 
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
+
             if (user) {
                 // User is signed in.
                 this.setState({
@@ -67,7 +62,6 @@ class Header extends Component {
     }
 
     render() {
-
         return (
             <ul className='top_header'>
                 <li><NavLink exact to='/'>Main page</NavLink></li>

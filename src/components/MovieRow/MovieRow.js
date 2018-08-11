@@ -10,14 +10,19 @@ class MovieRow extends Component {
         super(props);
         this.state = {
             isUserLogged: false,
-            userId: ''
+            userId: null,
+            disabledButton: false
         }
     }
 
-    AddToFavourites = () => {
+    AddToFavourites = (e) => {
+        e.preventDefault();
         if (typeof this.props.AddMovieToFavourites === 'function') {
             this.props.AddMovieToFavourites(this.props.movieResult, this.state.userId);
         }
+        this.setState({
+            disabledButton: true
+        });
     };
 
     RemoveFromFavourites = () => {
@@ -27,7 +32,7 @@ class MovieRow extends Component {
     };
 
     componentDidMount() {
-        if (this.props.loggedUserId !== '') {
+        if (this.props.loggedUserId) {
             this.setState({
                 isUserLogged: true,
                 userId: this.props.loggedUserId
@@ -38,7 +43,6 @@ class MovieRow extends Component {
     render() {
         return (
             <div key={this.props.movieResult.id} className='jumbotron movieRow'>
-                {/*<div className='col-xs-12 col-sm-4 col-md-4 movieImg'>*/}
                 <div className='movieImg'>
                     <img
                         src={this.props.movieResult.poster_path
@@ -47,18 +51,22 @@ class MovieRow extends Component {
                         className='movieImg' width={200}>
                     </img>
                 </div>
-                {/*<div className='col-xs-12 col-sm-8 col-md-8 movieData'>*/}
                 <div className='movieData'>
                     <h2>{this.props.movieResult.title}</h2>
+                    <p>Year: {this.props.movieResult.release_date.substring(0,4)}</p>
                     {this.state.isUserLogged
-                        ? <p onClick={this.AddToFavourites}>⛧ Add to favourites</p>
+                        ? <button disabled={this.state.disabledButton} onClick={(event) => this.AddToFavourites(event)} type='button' className='btn btn-light favouritesButton'>⛧ Add to favourites</button>
                         : null}
-                    {this.state.isUserLogged
+                    {/* {this.state.isUserLogged
                         ? <p onClick={this.RemoveFromFavourites}>⛧ Remove from favourites</p>
-                        : null}
+                        : null} */}
                     <p>Description: {this.props.movieResult.overview}</p>
-                    <p>TNDB rating (1-10): {this.props.movieResult.vote_average}</p>
-                    <p>IMDB rating (1-10): {this.props.movieResult.imdbRating}</p>
+                    {this.props.TNDBcheckboxValue
+                    ? <p>TNDB rating (1-10): {this.props.movieResult.vote_average}</p>
+                    : null}
+                    {this.props.IMDBcheckboxValue
+                    ? <p>IMDB rating (1-10): {this.props.movieResult.imdbRating}</p>
+                    : null}
                 </div>
             </div>
         )

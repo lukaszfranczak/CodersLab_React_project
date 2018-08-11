@@ -8,7 +8,6 @@ import './MovieFavourites.scss';
 // dodać informację o źródle danego filmu i jeśli dany film jest z komponentu MovieFavourites to ukryć opcję Add to favourites
 
 class MovieFavourites extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -17,8 +16,8 @@ class MovieFavourites extends Component {
         }
     }
 
-    componentWillMount() {
-        var db = firebase.app().database().ref('movies/'+this.props.loggedUserId)
+    componentDidMount() {
+        var db = firebase.app().database().ref('movies/' + this.props.loggedUserId)
 
         db.on('value', (dataFromFB) => {
             const fb = dataFromFB.val();
@@ -34,14 +33,19 @@ class MovieFavourites extends Component {
                 pending: false
             })
         })
-
     }
 
     render() {
         let rows = [];
         {this.state.favouriteMovies.forEach((movie) => {
             rows.push(
-                <MovieRow movieResult={movie} key={movie.id}/>
+                <MovieRow 
+                    movieResult={movie} 
+                    key={movie.id} 
+                    IMDBcheckboxValue={true} 
+                    TNDBcheckboxValue={true}
+                    source={this.props.favourites}
+                />
             )
         })
 

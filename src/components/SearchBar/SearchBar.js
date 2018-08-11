@@ -7,7 +7,9 @@ class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            movieName: ''
+            movieName: '',
+            IMDBcheckbox: false,
+            TNDBcheckbox: false
         }
     }
 
@@ -17,10 +19,23 @@ class SearchBar extends Component {
         })
     };
 
+    handleIMDBCheckbox = () => {
+        this.setState({
+            IMDBcheckbox: this.state.IMDBcheckbox==false ? true : false
+        })
+    };
+
+    handleTNDBCheckbox = () => {
+        this.setState({
+            TNDBcheckbox: this.state.TNDBcheckbox==false ? true : false
+        })
+    };
+
     searchMovie = (e) => {
+        const { movieName, IMDBcheckbox, TNDBcheckbox} = this.state;
         e.preventDefault();
         if (typeof this.props.searchForUserMovie === 'function') {
-            this.props.searchForUserMovie(this.state.movieName);
+            this.props.searchForUserMovie(movieName, IMDBcheckbox, TNDBcheckbox);
         }
     };
 
@@ -32,11 +47,11 @@ class SearchBar extends Component {
                 </div>
                 <div className='form-check'>
                     <label className='form-check-label checkBox checkBoxLabels'>
-                        <input className='form-check-input' type='checkbox' />
+                        <input className='form-check-input' type='checkbox' onChange={this.handleIMDBCheckbox} />
                         IMDB data
                     </label>
                     <label className='form-check-label checkBox checkBoxLabels'>
-                        <input className='form-check-input' type='checkbox' />
+                        <input className='form-check-input' type='checkbox' onChange={this.handleTNDBCheckbox} />
                         TMDB data
                     </label>
                 </div>
