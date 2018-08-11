@@ -23,7 +23,8 @@ class App extends Component {
         super(props);
         this.state = {
             loggedUser: '',
-            isUserLogged: false
+            isUserLogged: false,
+            pending: true
         }
     }
 
@@ -36,7 +37,8 @@ class App extends Component {
                         email: user.email,
                         userId: user.uid
                     },
-                    isUserLogged: true
+                    isUserLogged: true,
+                    pending: false
                 })
             }
         });
@@ -52,8 +54,16 @@ class App extends Component {
         window.location.replace('/#/');
     }
 
+    componentWillUnmount() {
+        this.authSubscription();
+    }
 
     render () {
+
+        if (this.state.pending) {
+            return null
+        }
+
         return (
             <HashRouter>
                 <div>
