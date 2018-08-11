@@ -61,7 +61,13 @@ class App extends Component {
     render () {
 
         if (this.state.pending) {
-            return null
+            return (
+                <HashRouter>
+                    <div>
+                        <Header />
+                    </div>
+                </HashRouter>
+            )
         }
 
         return (
