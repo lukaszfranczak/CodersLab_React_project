@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 
 import * as firebase from 'firebase';
 
-// import 'whatwg-fetch';
-
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyCpCYIbannStAwc9tiaoVJHmVjgvwNJ_yk",

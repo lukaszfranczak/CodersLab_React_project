@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import './MovieRow.scss';
 
-// dodać event na dodawanie danego filmu do ulubionych i zmienić stylowanie gwiazdki
-
 class MovieRow extends Component {
 
     constructor(props) {
