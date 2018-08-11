@@ -5,7 +5,7 @@ Main idea of the project is to aggregate movie information from different source
 Technologies applied:
 - React
 - Firebase
-- CSS
+- SASS
 - Bootstrap
 - Webpack
 
@@ -15,5 +15,9 @@ Functionalities:
 - user accounts with list of favourites
 
 To-do:
+- fix a bug with favourite movies
+- add option to sort / tailor movies
+- add more movie sources
+- add a component with specific movie description and more data: trailer, cast etc.
 - add sharing option
-- full RWD
+- full RWD (hamburger etc.)
