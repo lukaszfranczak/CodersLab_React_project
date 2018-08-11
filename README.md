@@ -15,7 +15,6 @@ Functionalities:
 - user accounts with list of favourites
 
 To-do:
-- fix a bug with favourite movies
 - add option to remove a movie from favourites
 - add option to sort / tailor movies
 - add more movie sources
