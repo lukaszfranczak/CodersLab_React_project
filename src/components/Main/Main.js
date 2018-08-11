@@ -33,10 +33,10 @@ class Main extends Component {
         db.push(data);
     }
 
-    RemoveFromFavourites = (data, userId) => {
-        const db = firebase.app().database().ref('movies/'+userId);
-        // db.child('-LJ-wuFdofgjep9RVoiU').remove();       // to działa, ale powinienem dla każdgo pytanie jak namierzyć konkretne dziecko
-    }
+    // RemoveFromFavourites = (data, userId) => {
+    //     const db = firebase.app().database().ref('movies/'+userId);
+    //     // db.child('-LJ-wuFdofgjep9RVoiU').remove();       // to działa, ale powinienem dla każdgo pytanie jak namierzyć konkretne dziecko
+    // }
 
 
     SearchUserMovie = (userInput, IMDBcheckboxValue, TNDBcheckboxValue) => {
@@ -75,7 +75,8 @@ class Main extends Component {
                         movieTNDB.imdbRating = data1[index].imdbRating
                     } else {
                         movieTNDB.imdbRating = 'N/A'
-                    }                });
+                    }                
+                });
 
                 // // Przypisywanie danych z data3 do data2
                 // data2.results.map( (movieTNDB, index) => {

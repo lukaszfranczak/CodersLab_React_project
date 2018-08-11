@@ -1,0 +1,18 @@
+.notFoundBackground {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 5;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.notFoundText {
+    font-family: 'Dancing Script';
+    font-size: 6rem; 
+    color: white; 
+    text-align: center;
+    margin-top: 30vh
+}

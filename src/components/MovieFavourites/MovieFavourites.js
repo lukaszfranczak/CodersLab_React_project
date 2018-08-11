@@ -4,9 +4,6 @@ import MovieRow from "../MovieRow/MovieRow";
 
 import './MovieFavourites.scss';
 
-// ZROBIĆ:
-// dodać informację o źródle danego filmu i jeśli dany film jest z komponentu MovieFavourites to ukryć opcję Add to favourites
-
 class MovieFavourites extends Component {
     constructor(props) {
         super(props);
@@ -18,6 +15,7 @@ class MovieFavourites extends Component {
 
     componentDidMount() {
         var db = firebase.app().database().ref('movies/' + this.props.loggedUserId)
+        console.log(db);
 
         db.on('value', (dataFromFB) => {
             const fb = dataFromFB.val();

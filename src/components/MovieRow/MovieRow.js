@@ -55,7 +55,7 @@ class MovieRow extends Component {
                     <h2>{this.props.movieResult.title}</h2>
                     <p>Year: {this.props.movieResult.release_date.substring(0,4)}</p>
                     {this.state.isUserLogged
-                        ? <button disabled={this.state.disabledButton} onClick={(event) => this.AddToFavourites(event)} type='button' className='btn btn-light favouritesButton'>⛧ Add to favourites</button>
+                        ? <button disabled={this.state.disabledButton} onClick={(event) => this.AddToFavourites(event)} type='button' className='btn btn-light favouritesButton'>Add to favourites</button>
                         : null}
                     {/* {this.state.isUserLogged
                         ? <p onClick={this.RemoveFromFavourites}>⛧ Remove from favourites</p>

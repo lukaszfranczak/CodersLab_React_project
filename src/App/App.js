@@ -7,6 +7,7 @@ import MovieFavourites from 'Components/MovieFavourites/MovieFavourites';
 import Register from 'Components/Register/Register';
 import LogIn from 'Components/LogIn/LogIn';
 
+import * as firebase from 'firebase';
 
 import {
     HashRouter,
@@ -24,28 +25,49 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userId: null
+            loggedUser: '',
+            isUserLogged: false
         }
     }
 
-    handleUserId = (user) => {
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in.
+                this.setState({
+                    loggedUser: {
+                        email: user.email,
+                        userId: user.uid
+                    },
+                    isUserLogged: true
+                })
+            }
+        });
+    }
+
+    signOut = () => {
+        firebase.auth().signOut()
+
         this.setState({
-            userId: user
+            isUserLogged: false
         })
-    };
+
+        window.location.replace('/#/');
+    }
+
 
     render () {
         return (
             <HashRouter>
                 <div>
-                    <Header fetchUserEmail={this.handleUserId} />
+                    <Header isUserLogged={this.state.isUserLogged} loggedUserEmail={this.state.loggedUser.email} signOut={this.signOut}/>
                     <div className="container">
                         <Switch>
-                            <Route exact path='/' render={ () => <Main loggedUserId={this.state.userId} />}/>
-                            <Route path='/top' render={ () => <TopRated loggedUserId={this.state.userId} />}/>
-                            <Route path='/favourites' render={ () => <MovieFavourites loggedUserId={this.state.userId} source='favourites'/>}/>
+                            <Route exact path='/' render={ () => <Main loggedUserId={this.state.loggedUser.userId} />}/>
+                            <Route path='/top' render={ () => <TopRated loggedUserId={this.state.loggedUser.userId} />}/>
+                            <Route path='/favourites' render={ () => <MovieFavourites loggedUserId={this.state.loggedUser.userId} source='favourites'/>}/>
                             <Route path='/register' component={Register}/>
-                            <Route path='/login' component={LogIn}/>
+                            <Route path='/login' component={LogIn}/> 
                             <Route path='*' component={NotFound} />
                         </Switch>
                     </div>
