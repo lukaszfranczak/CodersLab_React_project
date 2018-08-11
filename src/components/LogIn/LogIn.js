@@ -50,14 +50,14 @@ class LogIn extends Component {
 
         return (
             <form>
-                <h2>Welcome</h2>
+                <h2 className='title mainTitle'>Welcome</h2>
                 <div className='form-group text-center'>
                     <input className='form-control searchInput' type='e-mail' placeholder='User e-mail' value={this.state.email} onChange={this.handleEmailValue} />
                 </div>
                 <div className='form-group text-center'>
                     <input className='form-control searchInput' type='password' placeholder='Password' value={this.state.password} onChange={this.handlePasswordValue} />
                 </div>
-                <div>
+                <div className='form-group text-center'>
                     <button disabled={isInvalid} className='btn searchButton' onClick={this.login}>Log in</button>
                 </div>
             </form>

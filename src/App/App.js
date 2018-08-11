@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Header from "../Header/Header";
-import Main from "../Main/Main";
-import TopRated from "../TopRated/TopRated";
-import NotFound from "../NotFound/NotFound";
-import MovieFavourites from '../MovieFavourites/MovieFavourites';
-import Register from '../Register/Register';
-import LogIn from '../LogIn/LogIn';
+import Header from 'Components/Header/Header';
+import Main from 'Components/Main/Main';
+import TopRated from 'Components/TopRated/TopRated';
+import NotFound from 'Components/NotFound/NotFound';
+import MovieFavourites from 'Components/MovieFavourites/MovieFavourites';
+import Register from 'Components/Register/Register';
+import LogIn from 'Components/LogIn/LogIn';
+
 
 import {
     HashRouter,

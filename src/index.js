@@ -16,7 +16,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-import App from "./components/App/App";
+import App from "../src/App/App";
 
 ReactDOM.render(
     <App />,

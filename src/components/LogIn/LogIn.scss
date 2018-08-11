@@ -1,0 +1,11 @@
+@import 'src/App/modules/colors';
+
+.mainTitle {
+  color: $title-color;
+}
+
+.title {
+  font-size: 2em;
+  text-align: center;
+  margin: 85px auto 30px auto;
+}

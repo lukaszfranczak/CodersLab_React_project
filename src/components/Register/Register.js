@@ -61,7 +61,7 @@ class Register extends Component {
 
         return (
             <form>
-                <h2>Welcome</h2>
+                <h2 className='title mainTitle'>Welcome</h2>
                 <div className='form-group text-center'>
                     <input className='form-control searchInput' type='e-mail' placeholder='User e-mail' value={this.state.email} onChange={this.handleEmailValue} />
                 </div>
@@ -71,7 +71,7 @@ class Register extends Component {
                 <div className='form-group text-center'>
                     <input className='form-control searchInput' type='password' placeholder='Confirm password' value={this.state.password2} onChange={this.handlePassword2Value} />
                 </div>
-                <div>
+                <div className='form-group text-center'>
                     <button disabled={isInvalid} className='btn searchButton' onClick={this.register}>Register</button>
                 </div>
             </form>
