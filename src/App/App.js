@@ -40,6 +40,10 @@ class App extends Component {
                     isUserLogged: true,
                     pending: false
                 })
+            } else {
+                this.setState({
+                    pending: false
+                })
             }
         });
     }
@@ -80,7 +84,7 @@ class App extends Component {
                             <Route path='/top' render={ () => <TopRated loggedUserId={this.state.loggedUser.userId} />}/>
                             <Route path='/favourites' render={ () => <MovieFavourites loggedUserId={this.state.loggedUser.userId} source='favourites'/>}/>
                             <Route path='/register' component={Register}/>
-                            <Route path='/login' component={LogIn}/> 
+                            <Route path='/login' component={LogIn}/>
                             <Route path='*' component={NotFound} />
                         </Switch>
                     </div>
