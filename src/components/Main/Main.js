@@ -4,6 +4,9 @@ import MoviesList from "../MoviesList/MoviesList";
 
 import './Main.scss';
 
+import * as firebase from 'firebase';
+import 'whatwg-fetch';
+
 // ZROBIĆ:
 // dodać dodatkowe grafiki do tła i zrobić losowanie z dostępnej listy przy każdym nowym wejściu na stronę
 
@@ -13,7 +16,7 @@ import './Main.scss';
 // https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US
 // dodać to w dodatkowym komponencie MovieDescription, tak żeby robić zapytanie dla jednego konkretnego filmu
 
-import * as firebase from 'firebase';
+
 
 
 class Main extends Component {
@@ -55,7 +58,7 @@ class Main extends Component {
 
         const OMDBPromise = TMDBPromise
             .then(data => Promise.all(data.results.map(item =>
-                fetch(`http://www.omdbapi.com/?t=${item.title}&apikey=${apiOMDBKey}`).then(r => r.json())
+                fetch(`https://www.omdbapi.com/?t=${item.title}&apikey=${apiOMDBKey}`).then(r => r.json())
             )))
 
         // const TMDBVideoPromise = TMDBPromise

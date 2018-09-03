@@ -4,6 +4,8 @@ import MoviesList from "../MoviesList/MoviesList";
 import './TopRated.scss';
 
 import * as firebase from 'firebase';
+import 'whatwg-fetch';
+
 
 
 // ZROBIĆ:
@@ -33,7 +35,7 @@ class TopRated extends Component {
 
         const OMDBPromise = TMDBPromise
             .then(data => Promise.all(data.results.map(item =>
-                fetch(`http://www.omdbapi.com/?t=${item.title}&apikey=${apiOMDBKey}`).then(r => r.json())
+                fetch(`https://www.omdbapi.com/?t=${item.title}&apikey=${apiOMDBKey}`).then(r => r.json())
             )))
 
         Promise
